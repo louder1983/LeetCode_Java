@@ -1,0 +1,83 @@
+package com.leetcode.java.packages21_40;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Combination_Sum_39 {
+
+	/*** 39. Combination Sum ***/
+	/*
+	 * 
+	 * 
+	Given a set of candidate numbers (C) (without duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
+	
+	The same repeated number may be chosen from C unlimited number of times.
+	
+	Note:
+	All numbers (including target) will be positive integers.
+	The solution set must not contain duplicate combinations.
+	For example, given candidate set [2, 3, 6, 7] and target 7, 
+	A solution set is: 
+	[
+	  [7],
+	  [2, 2, 3]
+	]
+	 *
+	 *
+	 */
+	
+	public static void main(String[] args){
+		
+		int[] nums1 = {2, 3, 5};
+		
+//		int[] nums1 = {1,2};
+		int target = 8;
+		
+		List<List<Integer>> result = new LinkedList<>();
+		
+		result = combinationSum(nums1, target);
+		
+		for(int i=0; i<result.size(); i++){
+			for(int j=0; j<result.get(i).size(); j++){
+				System.out.print(result.get(i).get(j) + "  ");
+			}
+			System.out.print("\n");
+		}
+		
+	}
+	
+    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> sum = new LinkedList<>();
+        
+        Arrays.sort(candidates);
+        if(candidates.length == 0 || target < candidates[0])
+        	return sum;
+        
+        int len = candidates.length;
+        for(int i=len-1; i>=0; i--){
+        	if(candidates[i]==target){
+        		sum.add(Arrays.asList(candidates[i]));
+        	} else if(candidates[i] < target){
+        		getResult(sum, new LinkedList<Integer>(), candidates, target-candidates[i], i, i);
+        	}
+        }
+        return sum;
+    }
+    
+    public static void getResult(List<List<Integer>> sum, List<Integer> cur, int candidates[], int target, int end, int start){
+    	for(int i=end; i>=0; i--){
+    		if( target == candidates[i]){
+    			cur.add(candidates[i]);
+    			cur.add(candidates[start]);
+    	    	sum.add(new LinkedList<Integer>(cur));
+    			cur.remove(cur.size()-1);
+    			cur.remove(cur.size()-1);
+    		} else if(target > candidates[i]){
+    			cur.add(candidates[i]);
+    			getResult(sum, cur, candidates, target-candidates[i], i, start);
+    			cur.remove(cur.size()-1);
+    		}
+    	}
+    }
+}
