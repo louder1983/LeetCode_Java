@@ -3,14 +3,18 @@ import com.leetcode.jave.datatypes.ListNode;
 
 public class SNinP_24 {
 
-	/*** 21. Merge Two Sorted Lists ***/
+	/*** 24. Swap Nodes in Pairs ***/
 	/*
 	 * 
 	 * 
-	Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+	Given a linked list, swap every two adjacent nodes and return its head.
 	
-	Input: (2 -> 3 -> 4) + (2 -> 6 -> 9)
-	Output: 2 -> 2 -> 3 -> 4 -> 6 -> 9
+	For example,
+	Given 1->2->3->4, you should return the list as 2->1->4->3.
+	
+	Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.
+	
+	Subscribe to see which companies asked this question.
 	 *
 	 *
 	 */

@@ -1,6 +1,6 @@
 package com.leetcode.java.packages41_60;
 
-public class JmpGame_55 {
+public class JumpGame_55 {
 	
 	/*** 55. Jump Game ***/
 	/*
